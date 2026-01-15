@@ -1,73 +1,88 @@
-# React + TypeScript + Vite
+# LMS System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Система управления обучением (Learning Management System) для управления курсовыми работами, студентами и заданиями.
 
-Currently, two official plugins are available:
+## Технологии
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19** - UI библиотека
+- **TypeScript** - типизация
+- **Vite** - сборщик
+- **Tailwind CSS v4** - стилизация
+- **TanStack Query v5** - управление данными
+- **React Router v7** - маршрутизация
+- **Lucide React** - иконки
 
-## React Compiler
+## Возможности
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Аутентификация пользователей
+- Управление студентами (CRUD)
+- Управление заданиями (CRUD)
+- Dashboard со статистикой
+- Переключение темы (светлая/тёмная)
+- Адаптивный дизайн для мобильных устройств
 
-## Expanding the ESLint configuration
+## Установка
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+```bash
+# Клонировать репозиторий
+git clone <repo-url>
+cd LMS-SYSTEM
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Установить зависимости
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Запуск
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+# Режим разработки
+npm run dev
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Сборка для продакшена
+npm run build
+
+# Предпросмотр продакшен сборки
+npm run preview
+
+# Проверка кода линтером
+npm run lint
 ```
+
+## Тестовые аккаунты
+
+| Email | Пароль | Роль |
+|-------|--------|------|
+| admin@lms.com | admin | Администратор |
+| teacher@lms.com | teacher | Преподаватель |
+
+## Структура проекта
+
+```
+src/
+├── api/           # API функции и mock данные
+├── components/
+│   ├── ui/        # UI компоненты (Card, Badge, Button, Modal, Table, Input)
+│   └── layout/    # Layout компоненты (Layout, Sidebar)
+├── hooks/
+│   ├── queries/   # TanStack Query хуки
+│   ├── useAuth.tsx    # Аутентификация
+│   └── useTheme.ts    # Управление темой
+├── pages/         # Страницы (Dashboard, Students, Assignments, Login)
+├── types/         # TypeScript типы
+└── lib/           # Утилиты
+```
+
+## Скриншоты
+
+### Dashboard
+Главная страница со статистикой и последними сдачами работ.
+
+### Студенты
+Таблица студентов с поиском, фильтрацией и CRUD операциями.
+
+### Задания
+Карточки заданий с информацией о дедлайнах и статусах.
+
+## Лицензия
+
+MIT
